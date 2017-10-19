@@ -2,7 +2,7 @@
 
 ## A React-Native plauground project
 
-**Tech Utilisatiuon**
+**Tech Utilisation**
 
 - react
 - react-native
