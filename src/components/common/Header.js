@@ -12,12 +12,14 @@ export class Header extends Component {
     }
 
     render() {
-        const { props } = this;
+        const { style, ...props } = this.props;
         const { textStyles, viewStyles } = styles;
         return (
-            <View style={viewStyles}>
+            <View style={[viewStyles, style]}>
                 {this.renderLeftButton()}
-                <Text testID={'header-title'} style={textStyles}>{props.headerTitle}</Text>
+                <Text testID={'header-title'} style={textStyles}>
+                    {props.headerTitle}
+                </Text>
                 {this.renderRightButton()}
             </View>
         );

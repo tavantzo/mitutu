@@ -1,42 +1,55 @@
 {
-    "project_info": {
-      "project_number": "325963210831",
-      "firebase_url": "https://authentication-c390c.firebaseio.com",
-      "project_id": "authentication-c390c",
-      "storage_bucket": "authentication-c390c.appspot.com"
-    },
-    "client": [
-      {
-        "client_info": {
-          "mobilesdk_app_id": "1:325963210831:android:8bb626e5f2d930e0",
-          "android_client_info": {
-            "package_name": "com.mitutu"
+  "project_info": {
+    "project_number": "325963210831",
+    "firebase_url": "https://authentication-c390c.firebaseio.com",
+    "project_id": "authentication-c390c",
+    "storage_bucket": "authentication-c390c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325963210831:android:8bb626e5f2d930e0",
+        "android_client_info": {
+          "package_name": "com.mitutu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325963210831-i5a95t4nitg06ts1knvd98q90n4croab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mitutu",
+            "certificate_hash": "b6dbfc656ad12635b1495b8796cee89758aa06f7"
           }
         },
-        "oauth_client": [
-          {
-            "client_id": "325963210831-8iske7kfvp8ij21hosghiko2h991k2bj.apps.googleusercontent.com",
-            "client_type": 3
-          }
-        ],
-        "api_key": [
-          {
-            "current_key": "AIzaSyA3sS97b7_t5aOC6WOYl5SXa-3xpNgNgzA"
-          }
-        ],
-        "services": {
-          "analytics_service": {
-            "status": 1
-          },
-          "appinvite_service": {
-            "status": 1,
-            "other_platform_oauth_client": []
-          },
-          "ads_service": {
-            "status": 2
-          }
+        {
+          "client_id": "325963210831-8iske7kfvp8ij21hosghiko2h991k2bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3sS97b7_t5aOC6WOYl5SXa-3xpNgNgzA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325963210831-8iske7kfvp8ij21hosghiko2h991k2bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
         }
       }
-    ],
-    "configuration_version": "1"
-  }
+    }
+  ],
+  "configuration_version": "1"
+}

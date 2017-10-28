@@ -146,6 +146,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-oauth')
     compile project(':react-native-device-info')
     compile project(':react-native-firebase')
     compile project(':react-native-i18n')

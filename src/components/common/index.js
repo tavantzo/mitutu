@@ -5,4 +5,5 @@ export { default as Container } from './Container';
 export * from './Header';
 export * from './InlineText';
 export * from './Spinner';
-export * from './TextLink';
+export { default as TextLink } from './TextLink';
+export { default as I18nText } from './I18nText';

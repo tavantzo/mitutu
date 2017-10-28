@@ -1,6 +1,6 @@
 # mitutu
 
-## A React-Native plauground project
+## A React-Native playground project
 
 **Tech Utilisation**
 

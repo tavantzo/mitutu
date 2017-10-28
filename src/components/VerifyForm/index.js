@@ -7,6 +7,7 @@ import { TextField as TextInput } from 'react-native-material-textfield';
 import i18n from '../../utils/i18n';
 import { Container } from '../common';
 import * as Actions from './actions';
+import { Theme } from  '../styles';
 
 const opts = { scope: 'components.VerifyForm' };
 
@@ -42,7 +43,7 @@ class VerifyForm extends PureComponent {
                         style={Styles.buttonStyle}
                         primary
                         raised
-                        tintColor={colors.green400}
+                        tintColor={Theme.colors.primary}
                         text={i18n.t('Let\'s go', opts)}
                         onPress={this.checkCode.bind(this)}
                     />

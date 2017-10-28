@@ -1,25 +1,25 @@
 import React from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { colors } from "material-native";
 
-export const TextLink = ({ label, onPress, ...props }) => {
+export default ({ children, onPress, style, ...props }) => {
     return (
         <TouchableWithoutFeedback
             onPress={onPress}
             {...props}
         >
-            <View style={styles.containerStyle}>
-                <Text style={styles.textStyle}>{label}</Text>
+            <View>
+                <Text style={[styles.textStyle, style]}>
+                    {children}
+                </Text>
             </View>
         </TouchableWithoutFeedback>
     );
 };
 
-const styles = {
-    containerStyle: {
-        flexWrap: 'wrap',
-        flex: 1
-    },
+const styles = StyleSheet.create({
     textStyle: {
-        color: 'blue',
+        color: colors.lightBlue200,
+        flexWrap: 'wrap',
     }
-};
+});

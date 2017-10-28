@@ -9,6 +9,7 @@ export default ({
     headerStyles,
     childrenContainerStyles,
     ...props }) => {
+    const scrollable = props.scrollable || false;
 
     return (
         <View
@@ -20,11 +21,18 @@ export default ({
                 style={[Styles.subHeaderStyle, headerStyles]}
                 text={headerText}
             />}
+            {scrollable &&
             <ScrollView
-                contentContainerStyle={[Styles.childrenContainerStyles, childrenContainerStyles]}
+                style={[Styles.childrenContainerStyles, childrenContainerStyles]}
             >
             {children}
-            </ScrollView>
+            </ScrollView>}
+            {scrollable === false &&
+            <View
+                style={[Styles.childrenContainerStyles, childrenContainerStyles]}
+            >
+            {children}
+            </View>}
         </View>
     );
 };
