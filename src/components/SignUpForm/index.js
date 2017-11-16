@@ -9,13 +9,12 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
-
 /* CUSTOM MODULES */
 import { Container, Spinner, TextLink } from '../common';
 import i18n from '../../utils/i18n';
 import I18nText from '../common/I18nText';
 import * as Actions from './actions';
-
+import { Theme, Common as CommonStyles } from '../styles';
 // Set the transaction scope
 const opts = { scope: 'components.SignUpForm' };
 
@@ -335,7 +334,7 @@ class SignUpForm extends PureComponent {
                 ref="submitButton"
                 style={Styles.buttonStyle}
                 disabled={loading}
-                color={colors.green400}
+                color={Theme.colors.primary}
                 title={i18n.t('Let\'s go', opts)}
                 onPress={this.submitData.bind(this)}
             />
@@ -392,11 +391,7 @@ export const Styles = StyleSheet.create({
         alignItems: 'stretch',
         alignContent: 'center',
     },
-    buttonStyle: {
-        height: 30,
-        marginTop: 20,
-        elevation: 4
-    },
+    buttonStyle: CommonStyles.buttonPrimaryStyle,
     inputTextStyles: {
         fontSize: 20,
         height: 30

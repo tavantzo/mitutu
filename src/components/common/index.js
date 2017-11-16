@@ -6,4 +6,4 @@ export * from './Header';
 export * from './InlineText';
 export * from './Spinner';
 export { default as TextLink } from './TextLink';
-export { default as I18nText } from './I18nText';
+export { default as I18nText, i18n } from './I18nText';

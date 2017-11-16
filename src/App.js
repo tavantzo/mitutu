@@ -5,11 +5,14 @@ import { Provider } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import thunk from 'redux-thunk';
 import firebase from 'react-native-firebase';
+
 import { Reducers } from './components';
 import AppRouter from './Router';
 import { SignUpFormTypes as Types } from './components/types';
 
+import { AppUser } from './models';
 import globals from './globals';
+
 
 const theme = getMaterialTheme({
     theme: 'light',
@@ -23,26 +26,29 @@ export default class App extends Component {
 
         const fbsApp = firebase.app();
         fbsApp.auth().onAuthStateChanged((user) => {
-            console.log('onAuthStateChanged', user);
+
             globals.store.dispatch({
                 type: 'AUTH_STATE_CHANGED',
                 payload: user
             });
 
             if (user) {
-                fbsApp.database().ref(`/users/${user.uid}`).on('value', snapshot => {
+                globals.user = new AppUser(user);
+                globals.user.onUpdate((updatedUserData) => {
                     globals.store.dispatch({
                         type: 'USER_DETAILS_FETCHED',
-                        payload: snapshot.val()
+                        payload: updatedUserData
                     });
                 });
 
-                if (user._user.phoneNumber) {
+                if (globals.user.phoneNumber) {
                     globals.store.dispatch({
                         type: Types.SIGNUP_PHONE_CHANGED,
-                        payload: user._user.phoneNumber
+                        payload: globals.user.phoneNumber
                     });
                 }
+            } else {
+                globals.user = null;
             }
 
             if (!user) {

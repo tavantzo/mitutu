@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import i18n from '../../utils/i18n';
 import { Container } from '../common';
-import { Theme } from '../styles';
+import { Theme, Common as CommonStyles } from '../styles';
 import * as Actions from './actions';
 
 const opts = { scope: 'components.UserDetailsForm' };
@@ -35,14 +35,16 @@ class UserDetailsForm extends PureComponent {
             displayName,
             firstName,
             lastName,
-            email,
-            user } = this.props;
+            email
+        } = this.refs;
+
+        const { user } = this.props;
 
         this.props.updateUserDetails({
-            displayName,
-            firstName,
-            lastName,
-            email,
+            displayName: displayName.props.value,
+            firstName: firstName.props.value,
+            lastName: lastName.props.value,
+            email: email.props.value,
             user });
     }
 
@@ -108,7 +110,8 @@ class UserDetailsForm extends PureComponent {
                     primary
                     title={i18n.t('update_details', opts)}
                     onPress={this.updateUserDetails.bind(this)}
-                    color={Theme.colors.buttons}
+                    color={Theme.colors.primary}
+                    style={Styles.buttonStyle}
                 />
             </Container>
         );
@@ -124,15 +127,12 @@ export const Styles = StyleSheet.create({
     },
     textInputStyles: {
         marginBottom: 10
-    }
+    },
+    buttonStyle: CommonStyles.buttonPrimaryStyle
 });
 
 const mapStateToProps = (states) => {
-    const email = states.userDetailsFormState.email
-        ? states.userDetailsFormState.email
-        : states.authState.email;
-
-    return { ...states.userDetailsFormState, user: states.authState.user, email };
+    return { ...states.userDetailsFormState, user: states.authState.user };
 };
 
 export default connect(mapStateToProps, Actions)(UserDetailsForm);

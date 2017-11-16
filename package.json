@@ -7,8 +7,10 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"fbemitter": "^2.1.1",
 		"focus-redux-reducer": "~1.0.3",
 		"google-libphonenumber": "^3.0.6",
+		"immutable": "^3.8.2",
 		"lodash": "^4.17.4",
 		"material-native": "0.0.0-alpha.12",
 		"prop-types": "^15.6.0",
@@ -25,6 +27,7 @@
 		"react-redux": "^5.0.6",
 		"react-test-renderer": "~16.0.0-alpha.12",
 		"redux": "^3.7.2",
+		"redux-immutable": "^4.0.0",
 		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {

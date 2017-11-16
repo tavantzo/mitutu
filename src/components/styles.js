@@ -10,5 +10,9 @@ export const Theme = {
 };
 
 export const Common = StyleSheet.create({
-
+    buttonPrimaryStyle: {
+        height: 30,
+        marginTop: 20,
+        elevation: 4
+    }
 });

@@ -26,37 +26,20 @@ const renderSignUpStack = () => {
 };
 
 const renderPostAuthStack = () => {
-    const renderRightButton = () => {
-        return (
-            <Icon.Button
-                name="exit-to-app"
-                size={24}
-                color={colors.white}
-                backgroundColor={colors.green400}
-                title="Sign out"
-                onPress={() => globals.store.dispatch({ type: 'SIGNOUT' })}
-            >
-                <I18nText style={{ color: colors.white }}>
-                    Sign out
-                </I18nText>
-            </Icon.Button>
-        );
-    };
 
     return (
         <Drawer
                 open
+                back={false}
                 key="home"
-                title={i18n.t('Home')}
                 contentComponent={DrawerMenu}
-                drawerWidth={350}
+                drawerWidth={300}
                 drawerIcon={<Icon name="menu" size={30} color={colors.white} />}
-                type="jump"
+                type="replace"
                 titleStyle={{ color: colors.white }}
-                leftButtonTextStyle={{ color: colors.white }}
-                renderRightButton={renderRightButton()}
-            >
-            <Scene key="main" component={Home} />
+        >
+            <Scene key="main" title={i18n.t('Home')} component={Home} />
+            <Scene key="editProfile" title={i18n.t('Edit Profile')} component={UserDetailsForm} />
         </Drawer>
     );
 };

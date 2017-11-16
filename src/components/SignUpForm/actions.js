@@ -173,6 +173,8 @@ export const externalAuthProvider = (signUpMethod) => {
 
         manager.configure(globals.config.authManager);
 
+        console.log(providerId, manager);
+
         manager.authorize(providerId, { scopes: 'email' })
             .then(result => {
                 console.log('AUTH', result);

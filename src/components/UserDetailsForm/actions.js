@@ -35,7 +35,7 @@ export const updateUserDetails = ({ user, displayName, firstName, lastName, emai
                 console.log('ERROR', err.code);
                 if (err.code === 'auth/requires-recent-login') {
                     dispatch({
-                        type: 'REAUTH_REQUIED',
+                        type: 'REAUTH_REQUIRED',
                         payload: currentUser._user.phoneNumber
                     });
                 }

@@ -2,7 +2,7 @@ export * from './actions';
 export * from './types';
 export * from './styles';
 /** Combined reducers */
-export { default as Reducers } from './reducers';
+export { CombineReducers as Reducers } from '../reducers';
 /** Components */
 export { default as DrawerMenu } from './DrawerMenu';
 export { default as Home } from './Home';

@@ -1,40 +1,29 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Button as RNButton } from 'react-native';
+import { connect } from 'react-redux';
 
-const Button = ({ children, onPress }) => {
-    const { touchableStyles, textStyle } = styles;
+import { Theme, Common } from '../styles';
 
-    return  (
-        <TouchableOpacity
-            onPress={onPress}
-            style={touchableStyles}
-        >
-            <Text style={textStyle}>
-                {children}
-            </Text>
-        </TouchableOpacity>
-    );
-};
+class CustomButton extends React.PureComponent {
+    render() {
+        const { loading, style, ...props } = this.props;
 
-const styles = {
-    touchableStyles: {
-        flex: 1,
-        alignSelf: 'stretch',
-        backgroundColor: '#fff',
-        borderWidth: 1,
-        borderColor: '#007aff',
-        borderRadius: 30,
-        marginLeft: 5,
-        marginRight: 5,
-    },
-    textStyle: {
-        alignSelf: 'center',
-        color: '#007aff',
-        fontSize: 16,
-        fontWeight: '600',
-        paddingTop: 10,
-        paddingBottom: 10,
+        return (
+            <RNButton
+                style={[Common.buttonPrimaryStyleStyle, style]}
+                disabled={loading}
+                color={Theme.colors.primary}
+                onPress={this.submitData.bind(this)}
+                {...props}
+            />
+        );
     }
+}
+
+const mapStateToProps = (states) => {
+    return {
+        loading: false
+    };
 };
 
-export { Button };
+export const Button = connect(mapStateToProps)(CustomButton);
