@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import { Button, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { TextField as TextInput } from 'react-native-material-textfield';
 import PropTypes from 'prop-types';
 
 import i18n from '../../utils/i18n';
-import { Container } from '../common';
+import { Container, Button } from '../common';
 import { Theme, Common as CommonStyles } from '../styles';
 import * as Actions from './actions';
 
@@ -23,7 +23,12 @@ class UserDetailsForm extends PureComponent {
         firstName: PropTypes.string,
         lastName: PropTypes.string,
         email: PropTypes.string,
-        user: PropTypes.object.isRequired
+        user: PropTypes.object.isRequired,
+        loading: PropTypes.bool
+    }
+
+    static defaultProps = {
+        loading: false,
     }
 
     inputTextChanged(prop, value) {
@@ -45,17 +50,24 @@ class UserDetailsForm extends PureComponent {
             firstName: firstName.props.value,
             lastName: lastName.props.value,
             email: email.props.value,
-            user });
+            user
+        });
     }
-
-    render() {
+/**
+ *
+ *
+ * @returns
+ * @memberof UserDetailsForm
+ */
+render() {
         const {
             errors,
             displayName,
             firstName,
             lastName,
             email,
-            user
+            user,
+            loading,
         } = this.props;
 
         console.log('Verify Form', this.props);
@@ -106,8 +118,8 @@ class UserDetailsForm extends PureComponent {
                 />
 
                 <Button
-                    raised
-                    primary
+                    loading={loading}
+                    hideButton={false}
                     title={i18n.t('update_details', opts)}
                     onPress={this.updateUserDetails.bind(this)}
                     color={Theme.colors.primary}
@@ -132,7 +144,10 @@ export const Styles = StyleSheet.create({
 });
 
 const mapStateToProps = (states) => {
-    return { ...states.userDetailsFormState, user: states.authState.user };
+    return {
+        ...states.userDetailsFormState,
+        user: states.authState.user
+    };
 };
 
 export default connect(mapStateToProps, Actions)(UserDetailsForm);
