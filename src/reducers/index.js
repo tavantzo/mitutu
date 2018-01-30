@@ -5,7 +5,7 @@ export const CombineReducers = combineReducers({
     drawerMenuState: require('../components/DrawerMenu/reducer').default,
     signUpFormState: require('../components/SignUpForm/reducer').default,
     verifyFormState: require('../components/VerifyForm/reducer').default,
-    userDetailsFormState: require('../components/UserDetailsForm/reducer').default
+    userDetailsFormState: require('../components/UserDetailsForm/reducer').default,
 });
 
 export default CombineReducers;

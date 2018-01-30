@@ -1,4 +1,4 @@
-export * from './Button';
+export { default as Button } from './Button';
 export * from './Card';
 export * from './CardSection';
 export { default as Container } from './Container';

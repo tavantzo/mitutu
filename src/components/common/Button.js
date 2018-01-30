@@ -1,29 +1,74 @@
-import React from 'react';
-import { Button as RNButton } from 'react-native';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Button, View } from 'react-native';
 
+import { Spinner } from './Spinner';
 import { Theme, Common } from '../styles';
 
-class CustomButton extends React.PureComponent {
-    render() {
-        const { loading, style, ...props } = this.props;
+class CustomButton extends Component {
+
+    static propTypes = {
+        loading: PropTypes.bool,
+        hideButton: PropTypes.bool,
+        activityIndicator: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.element,
+            PropTypes.object
+        ]),
+        indicatorProps: PropTypes.object,
+    }
+
+    static defaultProps = {
+        loading: false,
+        hideButton: true,
+        activityIndicator: Spinner,
+        indicatorProps: { size: 'large' },
+    }
+
+    shouldComponentUpdate = (nextProps) => {
+        return (this.props.loading !== nextProps.loading);
+    }
+
+
+    renderIndicator() {
+        const {
+            loading,
+            indicatorProps } = this.props;
+
+        const ActivityIndicator = this.props.activityIndicator;
+
+        if (loading === false) {
+            return;
+        }
 
         return (
-            <RNButton
-                style={[Common.buttonPrimaryStyleStyle, style]}
-                disabled={loading}
-                color={Theme.colors.primary}
-                onPress={this.submitData.bind(this)}
-                {...props}
+            <ActivityIndicator
+                {...indicatorProps}
             />
+        );
+    }
+
+    render() {
+        const {
+            loading,
+            hideButton,
+            style,
+            ...props
+        } = this.props;
+
+        return (
+            <View>
+                {(loading === false || (loading && hideButton)) &&
+                <Button
+                    style={[Common.buttonPrimaryStyleStyle, style]}
+                    disabled={loading}
+                    color={Theme.colors.primary}
+                    {...props}
+                />}
+                {this.renderIndicator()}
+            </View>
         );
     }
 }
 
-const mapStateToProps = (states) => {
-    return {
-        loading: false
-    };
-};
-
-export const Button = connect(mapStateToProps)(CustomButton);
+export default CustomButton;

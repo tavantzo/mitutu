@@ -1,11 +1,18 @@
 import Reducer from 'focus-redux-reducer';
+import { Types } from './actions';
 
 class UserDetailsReducer extends Reducer {
 
     mapActionToMethod() {
         return {
             USER_DETAILS_FETCHED: this.userDataFetched,
+            [Types.BUTTON_ACTIVITY_INDICATOR_TOGGLE]: this.toggleActivityIndicator,
+
         };
+    }
+
+    toggleActivityIndicator(payload) {
+        return { loading: payload };
     }
 
     inputChanged(change) {
@@ -84,6 +91,7 @@ export default new UserDetailsReducer({
     displayName: null,
     firstName: null,
     lastName: null,
+    loading: false,
     email: null,
     user: null
 });
